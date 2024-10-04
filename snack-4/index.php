@@ -236,6 +236,8 @@ $classi = [
         ],
     ],
 ];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -263,12 +265,14 @@ $classi = [
 <body>
     <!-- Container  -->
     <div class='container mx-auto py-4'>
+        <?php if(isset($classi) && !empty($classi)) { ?>
         <?php foreach($classi as $key=>$details){ ?>
         <ul>
             <h2>
                 <?= $key ?>
             </h2>
             <?php foreach($details as $infoStudent) {?>
+            <?php if($infoStudent["voto_medio"] > 5) { ?>
             <li>
                 <p>Id: <?= $infoStudent["id"] ?></p>
                 <p>First Name: <?= $infoStudent["nome"] ?></p>
@@ -279,7 +283,9 @@ $classi = [
                 <p>Image: <?= $infoStudent["immagine"] ?></p>
             </li>
             <?php } ?>
+            <?php } ?>
         </ul>
+        <?php } ?>
         <?php } ?>
 
     </div>

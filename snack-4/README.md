@@ -5,3 +5,6 @@ https://pastebin.com/HksnN0aS**
 
 ### Snack 4A: 
 **Print on the page, without any particular styling, the name of each class and below each one, the details of every student present in the respective class.**
+
+### Snack 4B: 
+**Filter our array and display, still divided by class, only the students with a sufficient average grade.**
