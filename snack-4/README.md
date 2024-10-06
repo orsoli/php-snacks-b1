@@ -8,3 +8,6 @@ https://pastebin.com/HksnN0aS**
 
 ### Snack 4B: 
 **Filter our array and display, still divided by class, only the students with a sufficient average grade.**
+
+### Snack 4C: 
+**Comment out the filter from point 4B (leave it in the code so we can still see it) and add a minimum amount of styling as you wish. Then, insert a form where the user can input a maximum average grade, and filter based on it only students with an average grade lower than the entered grade.**

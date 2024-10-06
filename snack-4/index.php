@@ -237,7 +237,6 @@ $classi = [
     ],
 ];
 
-
 ?>
 
 <!DOCTYPE html>
@@ -265,27 +264,86 @@ $classi = [
 <body>
     <!-- Container  -->
     <div class='container mx-auto py-4'>
-        <?php if(isset($classi) && !empty($classi)) { ?>
-        <?php foreach($classi as $key=>$details){ ?>
-        <ul>
-            <h2>
-                <?= $key ?>
-            </h2>
-            <?php foreach($details as $infoStudent) {?>
-            <?php if($infoStudent["voto_medio"] > 5) { ?>
-            <li>
-                <p>Id: <?= $infoStudent["id"] ?></p>
-                <p>First Name: <?= $infoStudent["nome"] ?></p>
-                <p>Last Name: <?= $infoStudent["cognome"] ?></p>
-                <p>Age: <?= $infoStudent["anni"] ?></p>
-                <p>Avarage Rating: <?= $infoStudent["voto_medio"] ?></p>
-                <p>Langage: <?= $infoStudent["linguaggio_preferito"] ?></p>
-                <p>Image: <?= $infoStudent["immagine"] ?></p>
-            </li>
+
+
+        <!-- ----   Comented 4-B -------  -->
+        <!-- <?php if(isset($classi) && !empty($classi)) { ?>
+            <?php foreach($classi as $key=>$details){ ?>
+                <ul>
+                    <h2>
+                        <?= $key ?>
+                    </h2>
+                    <?php foreach($details as $infoStudent) {?>
+                        <?php if($infoStudent["voto_medio"] > 5) { ?>
+                            <li>
+                                <p>Id: <?= $infoStudent["id"] ?></p>
+                                <p>First Name: <?= $infoStudent["nome"] ?></p>
+                                <p>Last Name: <?= $infoStudent["cognome"] ?></p>
+                                <p>Age: <?= $infoStudent["anni"] ?></p>
+                                <p>Avarage Rating: <?= $infoStudent["voto_medio"] ?></p>
+                                <p>Langage: <?= $infoStudent["linguaggio_preferito"] ?></p>
+                                <p>Image: <?= $infoStudent["immagine"] ?></p>
+                            </li>
+                            <?php } ?>
+                            <?php } ?>
+                        </ul>
+                        <?php } ?>
+                        <?php } ?> -->
+        <!-- ----   Comented 4-B -------  -->
+
+        <!-- Search form  -->
+        <form class="row bg-warning border border-1 rounded-3 shadow w-50 px-3 g-3" action="" method="get">
+            <label for="avarageRate">Search students by Max Avarage Rate</label>
+            <div class="col-auto">
+                <input type="number" class="form-control" name="avarageRate" id="avarageRate" min="1" max="10"
+                    placeholder="Nr">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3">Search</button>
+            </div>
+        </form>
+
+        <!-- All Classes and card students  -->
+        <?php foreach($classi as $className => $students){ ?>
+        <!-- Class Name  -->
+        <div class="title bg-success text-center text-white rounded-3 p-2 my-4">
+            <h1>
+                <?= $className ?>
+            </h1>
+        </div>
+        <!-- Students cards  -->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+            <?php foreach($students as $infoStudent) {?>
+            <?php if(!isset($_GET["avarageRate"]) || !is_numeric($_GET["avarageRate"]) || $infoStudent["voto_medio"] < $_GET["avarageRate"]){  ?>
+            <div class="col border border-2 rounded-3 shadow p-3">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <p>Id: <?= $infoStudent["id"] ?></p>
+                    </li>
+                    <li class="list-group-item">
+                        <p>First Name: <?= $infoStudent["nome"] ?></p>
+                    </li>
+                    <li class="list-group-item">
+                        <p>Last Name: <?= $infoStudent["cognome"] ?></p>
+                    </li>
+                    <li class="list-group-item">
+                        <p>Age: <?= $infoStudent["anni"] ?></p>
+                    </li>
+                    <li class="list-group-item">
+                        <p>Avarage Rating: <?= $infoStudent["voto_medio"] ?></p>
+                    </li>
+                    <li class="list-group-item">
+                        <p>Langage: <?= $infoStudent["linguaggio_preferito"] ?></p>
+                    </li>
+                    <li class="list-group-item">
+                        <p>Image: <?= $infoStudent["immagine"] ?></p>
+                    </li>
+                </ul>
+            </div>
+
             <?php } ?>
             <?php } ?>
-        </ul>
-        <?php } ?>
+        </div>
         <?php } ?>
 
     </div>
