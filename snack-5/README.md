@@ -1,0 +1,2 @@
+### Description: 
+**Create a function that checks if a word (or phrase) is a palindrome, without using built-in functions, and returns true if it is, false otherwise. Test it through a GET request via a form.**
