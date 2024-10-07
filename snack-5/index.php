@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__.'/function.php')
+require_once __DIR__.'/function.php'
 ?>
 
 <!DOCTYPE html>
@@ -27,12 +27,23 @@ require_once(__DIR__.'/function.php')
 <body>
     <!-- Container  -->
     <div class='container mx-auto py-4'>
-        <form action="" method="post"></form>
-        <div class="mb-3">
-            <label for="palindromCheck" class="form-label">Insert word to check</label>
-            <input type="text" class="form-control" id="palindromCheck" placeholder="word">
-        </div>
-        <button type="submit" class="btn btn-primary">Check</button>
+        <form action="" method="post">
+            <div class="mb-3">
+                <label for="palindromCheck" class="form-label">Insert word to check</label>
+                <input type="text" class="form-control" name="palindroma" id="palindromCheck" placeholder="word">
+            </div>
+            <button type="submit" class="btn btn-primary">Check</button>
+        </form>
+
+        <h1>
+            <?php if(isset($_POST["palindroma"]) && !empty($_POST["palindroma"])){ ?>
+            <?php if(palindrome($_POST["palindroma"])){?>
+            This word: <?= $_POST["palindroma"] ?> is palindroma
+            <?php }else{ ?>
+            This word: <?= $_POST["palindroma"] ?> is not palindroma
+            <?php }?>
+            <?php }?>
+        </h1>
     </div>
 </body>
 
