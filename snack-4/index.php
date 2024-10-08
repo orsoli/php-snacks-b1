@@ -237,6 +237,24 @@ $classi = [
     ],
 ];
 
+// Define functions
+
+if(isset($classi) && !empty($classi)){
+    $filteredClasses = []; // Variable to store filtered array
+    foreach($classi as $className => $class){
+        $currentClass = []; // Store each current class
+        foreach($class as $student){
+            if(!isset($_GET["avarageRate"]) || !is_numeric($_GET["avarageRate"]) || $student["voto_medio"] < $_GET["avarageRate"]){
+                $currentClass[]=$student;
+            }
+        }
+        if(count($currentClass) > 1){
+            $filteredClasses[$className] = $currentClass;
+        }
+    }
+    
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -304,7 +322,7 @@ $classi = [
         </form>
 
         <!-- All Classes and card students  -->
-        <?php foreach($classi as $className => $students){ ?>
+        <?php foreach($filteredClasses as $className => $class){ ?>
         <!-- Class Name  -->
         <div class="title bg-success text-center text-white rounded-3 p-2 my-4">
             <h1>
@@ -313,7 +331,7 @@ $classi = [
         </div>
         <!-- Students cards  -->
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
-            <?php foreach($students as $infoStudent) {?>
+            <?php foreach($class as $infoStudent) {?>
             <?php if(!isset($_GET["avarageRate"]) || !is_numeric($_GET["avarageRate"]) || $infoStudent["voto_medio"] < $_GET["avarageRate"]){  ?>
             <div class="col border border-2 rounded-3 shadow p-3">
                 <ul class="list-group">
